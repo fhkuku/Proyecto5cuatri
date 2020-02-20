@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="280dp"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="20dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/woman_yellow" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/md_white_1000">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/woman_yellow" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="1dp"
+            android:layout_height="280dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/woman_yellow"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/txtpost_fecha"
+            android:layout_width="112dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="8dp"
+            android:text="22:30"
+            android:textAlignment="center"
+            android:textColor="@color/md_grey_400"
+            app:layout_constraintEnd_toEndOf="@+id/imgUser"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/imgUser"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgUser"
+            android:layout_width="164dp"
+            android:layout_height="95dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/txtpost_fecha"
+            tools:srcCompat="@tools:sample/avatars[12]" />
+
+        <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="175dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="20dp"
+            android:text="El Mejor trabajo del mundo"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15dp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="@+id/txtnombre"
+            app:layout_constraintHorizontal_bias="0.416"
+            app:layout_constraintStart_toEndOf="@+id/imgUser"
+            app:layout_constraintTop_toBottomOf="@+id/txtnombre" />
+
+        <TextView
+            android:id="@+id/txtCategoria"
+            android:layout_width="175dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="24dp"
+            android:text="Administrativo"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/txtnombre"
+            app:layout_constraintStart_toStartOf="@+id/txtTitulo"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitulo" />
+
+        <TextView
+            android:id="@+id/txtdescripcion"
+            android:layout_width="308dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="16dp"
+            android:lines="4"
+            android:text="Consite en tal y tal cosa que la verdad no se que estoy hacendo blab bla bla bla bla bla bla bla .... "
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toStartOf="@+id/imageView3"
+            app:layout_constraintHorizontal_bias="0.368"
+            app:layout_constraintStart_toStartOf="@+id/imgUser"
+            app:layout_constraintTop_toBottomOf="@+id/txtCategoria" />
+
+        <TextView
+            android:id="@+id/txtnombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginTop="36dp"
+            android:text="Naiby Aguilar Morales"
+            android:textCursorDrawable="@drawable/iconopersona"
+            android:textColor="@color/colorAccent"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/txtpost_fecha"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtDireccion"
+            android:layout_width="317dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp"
+            android:text="Calle 532 #422 Salvador Centro, Merida Yucatan"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="@+id/txtdescripcion"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/txtdescripcion"
+            app:layout_constraintTop_toBottomOf="@+id/txtdescripcion"
+            android:gravity="start" />
+
+        <TextView
+            android:id="@+id/txtTarifa"
+            android:layout_width="131dp"
+            android:layout_height="16dp"
+            android:text="500"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtDireccion"
+            app:layout_constraintHorizontal_bias="0.048"
+            app:layout_constraintStart_toStartOf="@+id/txtDireccion"
+            app:layout_constraintTop_toBottomOf="@+id/txtDireccion" />
+
+        <Button
+            android:id="@+id/btnsolicitar"
+            android:layout_width="120dp"
+            android:layout_height="23dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btnlog"
+            android:text="Solicitar"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.93"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDireccion"
+            app:layout_constraintVertical_bias="0.589"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
