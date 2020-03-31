@@ -1,10 +1,9 @@
 package com.example.proyecto5cuatri.interfaces
 
 import com.google.gson.JsonArray
+import okhttp3.MultipartBody
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -25,15 +24,15 @@ interface ApiService {
     ): Call<String>
 
     @FormUrlEncoded
-    @POST("Service.asmx/GeTPublicacion")
-    fun GetPublicacion(@Field("id") id: Int): Call<JsonArray>
+    @POST("Service.asmx/App_GeTPublicacion")
+    fun GetPublicacion(@Field("id") id: String): Call<JsonArray>
 
     @FormUrlEncoded
-    @POST("Service.asmx/GetPersona")
+    @POST("Service.asmx/App_GetPersona")
     fun GetPersona(@Field("id") id: Int): Call<JsonArray>
 
     @FormUrlEncoded
-    @POST("Service.asmx/Addcalificacion")
+    @POST("Service.asmx/App_Addcalificacion")
     fun Addcalificacion(
         @Field("idusuario") idusuario: Int, @Field("puntuacion") puntuacion: Double, @Field(
             "comentario"
@@ -41,7 +40,7 @@ interface ApiService {
     ): Call<String>
 
     @FormUrlEncoded
-    @POST("Service.asmx/Addinsidencia")
+    @POST("Service.asmx/App_Addinsidencia")
     fun Addinsidencia(
         @Field("mensaje") mensaje: String, @Field("idusuario") idusuario: Int,
         @Field("idusreportado") idusreportado: Int, @Field("estatus") estatus: Int,
@@ -50,6 +49,25 @@ interface ApiService {
 
     @POST("Service.asmx/GetCategorias")
     fun getCategorias(): Call<JsonArray>
+
+    @Multipart
+    @POST("Service.asmx/App_UploadFile")
+    fun loadImage(
+        @Part file: MultipartBody.Part
+    ): Call<String>
+
+    @FormUrlEncoded
+    @POST("Service.asmx/App_uploadfotoperfil")
+    fun Updatefotoperfil(
+        @Field("img") img: String, @Field("id") id: Int
+    ): Call<String>
+
+    @FormUrlEncoded
+    @POST("Service.asmx/validarEmail")
+    fun validarEmail(
+        @Field("email") email: String
+    ): Call<String>
+
 
 
 }

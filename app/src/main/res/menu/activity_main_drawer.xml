@@ -11,23 +11,28 @@
         <item
             android:id="@+id/nav_perfil"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:title="@string/menu_perfil" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_publicacion"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="@string/menu_publica" />
         <item
-            android:id="@+id/nav_tools"
+            android:id="@+id/nav_historial"
             android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
-    </group>
-    <group>
-    <menu>
+            android:title="@string/menu_historial" />
         <item
-            android:id="@+id/nav_close_session"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/close_session" />
-    </menu>
+            android:id="@+id/nav_CV"
+            android:icon="@drawable/ic_menu_share"
+            android:title="@string/menu_CV" />
     </group>
 
+    <item android:title="Communicate">
+        <menu>
+
+            <item
+                android:id="@+id/nav_sesion"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/menu_sesion" />
+        </menu>
+    </item>
 </menu>

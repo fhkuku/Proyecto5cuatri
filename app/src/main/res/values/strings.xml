@@ -6,12 +6,11 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Perfil</string>
-    <string name="menu_slideshow">Solicitudes</string>
-    <string name="menu_tools">Historial</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
-    <string name="close_session">Cerrar sesión</string>
+    <string name="menu_perfil">Perfil</string>
+    <string name="menu_publica">Publicar</string>
+    <string name="menu_historial">Historial</string>
+    <string name="menu_CV">CV</string>
+    <string name="menu_sesion">Cerrar Sesión</string>
     <string name="correo">Correo electronico</string>
     <string name="password">Ingrese su contraseña</string>
     <string name="olvidado">¿Haz olvidado tu contraseña?</string>
@@ -31,6 +30,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="solicitar_permiso">Solicitud de permisos</string>
+    <string name="mensaje_permiso">FemsJup necesita permisos para acceder a la ubicación del dispositivo, almacenamiento y cámara. Esto para poder brindar una mejor experiencia y servicios necesarios</string>
+    <string name="btn_dar_permisos">Otorgar permisos</string>
 
 </resources>

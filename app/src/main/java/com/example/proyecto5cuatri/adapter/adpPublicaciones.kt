@@ -1,11 +1,15 @@
 package com.example.proyecto5cuatri.adapter
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyecto5cuatri.R
+import com.example.proyecto5cuatri.activitys.info_publicacion
 import com.example.proyecto5cuatri.modelo.publicacionModel
 import kotlinx.android.synthetic.main.item_post.view.*
 
@@ -31,28 +35,44 @@ class adpPublicaciones(context: Context, lista: List<publicacionModel>) :
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        /*
-        holder.titulo.setText(lista.get(position).titulo)
-        holder.categoria.setText(lista.get(position).categoria)
-        holder.descripcion.setText(lista.get(position).descripcion)
-        holder.direccion.setText( lista.get(position).direccion +" "+lista.get(position).municipio +" "+lista.get(position).estado + " "+lista.get(position).pais)
-        holder.fecha.setText(lista.get(position).fecha)
-        holder.tarifa.setText("Costo del servicio : "+lista.get(position).tarifa)
-        holder.nombre.setText( lista.get(position).nombre +" "+ lista.get(position).apellido_p )
-        Picasso.with(contex).load(lista[position].imagen).into(holder.imagen)
+        if (!lista[position].visible){
+            holder.itemView!!.visibility = View.GONE
+            holder.itemView.layoutParams = RecyclerView.LayoutParams(0,0)
+        }
+        holder.tv_Titulo.text = lista[position].titulo
+        holder.tv_descripcion.text = lista[position].descripcion
+        holder.tv_tarifa.text = "Precio $"+ lista[position].tarifa+" MXN"
+        holder.btn_solicitar.setOnClickListener{
+            val intent = Intent(contex, info_publicacion::class.java)
+            intent.putExtra("id", lista[position].id)
+            intent.putExtra("empleada", lista[position].empleada)
+            intent.putExtra("descripcion", lista[position].descripcion)
+            intent.putExtra("tarifa", lista[position].tarifa)
+            intent.putExtra("disponibilidad", lista[position].disponibilidad)
+            intent.putExtra("titulo", lista[position].titulo)
+            intent.putExtra("fecha", lista[position].fecha)
+            intent.putExtra("extra", lista[position].extra)
+            intent.putExtra("latitud", lista[position].latitud)
+            intent.putExtra("longitud", lista[position].longitud)
+            intent.putExtra("radio", lista[position].radio)
+            intent.putExtra("icono", lista[position].icono)
+            intent.putExtra("categoria",lista[position].categoria)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }else{
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            }
+            contex?.startActivity(intent)
+        }
 
-         */
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val titulo = itemView.txtTitulo
-        val categoria = itemView.txtCategoria
-        val descripcion = itemView.txtdescripcion
-        val direccion = itemView.txtDireccion
-        val fecha = itemView.txtpost_fecha
-        val tarifa = itemView.txtTarifa
-        val nombre = itemView.txtnombre
-        val imagen = itemView.imgUser
+        val tv_Titulo = itemView.tv_Titulo
+        val tv_descripcion = itemView.tv_descripcion
+        val tv_tarifa = itemView.tv_tarifa
+        val btn_solicitar = itemView.btnsolicitar
+
 
     }
 

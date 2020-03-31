@@ -9,19 +9,19 @@ class usuarioModel(
     fotoperfil: String = "", longi: String = "",
     lat: String = "", idinteres: Int = 0
 ) {
-    var email = email
-    var pass = pass
-    var status = status
-    var idperfil = idperfil
-    var nombre = nombre
-    var apellido = apellido
-    var telefono = telefono
-    var sexo = sexo
-    var curp = curp
-    var fechanacimiento = fechanacimiento
-    var fotoperfil = fotoperfil
-    var longi = longi
-    var lat = lat
-    var idinteres = idinteres
+    internal var email = email
+    internal var pass = pass
+    internal var status = status
+    internal var idperfil = idperfil
+    internal var nombre = nombre
+    internal var apellido = apellido
+    internal var telefono = telefono
+    internal var sexo = sexo
+    internal var curp = curp
+    internal var fechanacimiento = fechanacimiento
+    internal  var fotoperfil = fotoperfil
+    internal var longi = longi
+    internal var lat = lat
+    internal var idinteres = idinteres
 
 }

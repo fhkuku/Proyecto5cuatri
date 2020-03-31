@@ -9,9 +9,9 @@
 
     <ImageView
         android:id="@+id/imgSplash"
-        android:layout_width="456dp"
-        android:layout_height="625dp"
-        android:src="@drawable/logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/splash"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

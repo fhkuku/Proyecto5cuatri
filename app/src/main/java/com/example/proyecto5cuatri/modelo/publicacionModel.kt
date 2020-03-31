@@ -1,28 +1,26 @@
 package com.example.proyecto5cuatri.modelo
 
-class publicacionModel(
-    categoria: Int = 0,
-    descripcion: String = "",
-    tarifa: String = "",
-    extra: String = "",
-    fecha: String = "",
-    idusuario: String = "",
-    status: Int = 0,
-    dispo: String = "",
-    lati: Double = 0.0,
-    long: Double = 0.0
+class publicacionModel( id:Int=0,
+    titulo:String="", descripcion:String="", categoria:String="", fecha:String="", tarifa:String="", extra:String="", disponibilidad:String="", latitud:Double=0.0,
+    longitud:Double=0.0,
+    empleada:String="", icono:String="", radio:Double=0.0, visible:Boolean =false, fotoEmpleada:String="",telefono:String="",score:Double=0.0
 ) {
-    var categoria = categoria
-    var descripcion = descripcion
-    var tarifa = tarifa
-    var extra = extra
-    var fecha = fecha
-    var idusuario = idusuario
-    var status = status
-    var dispo = dispo
-    var api_Key =
-        "pk.eyJ1IjoibmFpYnkiLCJhIjoiY2szcXJpbXk5MDRybDNjbXE4aTdncjNzNiJ9.cgAWHSLCncNGAydECoILWg"
-    var lati = lati
-    var long = long
+    internal var id=id
+    internal var titulo = titulo
+    internal var descripcion = descripcion
+    internal var fecha = fecha
+    internal var tarifa = tarifa
+    internal var extra = extra
+    internal var disponibilidad = disponibilidad
+    internal var latitud = latitud
+    internal var longitud = longitud
+    internal var empleada = empleada
+    internal var icono = icono
+    internal var categoria = categoria
+    internal var radio = radio
+    internal var visible = visible
+    internal var fotoEmpleada=fotoEmpleada
+    internal var score=score
+    internal var telefono=telefono
 
 }

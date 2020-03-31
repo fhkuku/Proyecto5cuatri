@@ -14,9 +14,10 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="399dp"
-            android:layout_height="198dp"
-            android:src="@drawable/woman_yellow"
+            android:layout_width="0dp"
+            android:scaleType="centerCrop"
+            android:layout_height="250dp"
+            android:src="@drawable/mujeres_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -118,6 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:checked="true"
                 android:text="Femenino"
                 android:textColor="@color/colorPrimaryDark" />
 

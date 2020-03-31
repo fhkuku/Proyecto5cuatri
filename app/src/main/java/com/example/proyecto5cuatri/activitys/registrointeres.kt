@@ -3,6 +3,7 @@ package com.example.proyecto5cuatri.activitys
 import android.content.*
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -12,10 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proyecto5cuatri.R
 import com.example.proyecto5cuatri.adapter.adpInteres
 import com.example.proyecto5cuatri.interfaces.ApiService
-import com.example.proyecto5cuatri.modelo.interesModel
-import com.example.proyecto5cuatri.modelo.startApi
-import com.example.proyecto5cuatri.modelo.usuarioModel
-import com.example.proyecto5cuatri.modelo.validationModel
+import com.example.proyecto5cuatri.modelo.*
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import kotlinx.android.synthetic.main.activity_login.*
@@ -26,20 +24,22 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class registrointeres : AppCompatActivity() {
-    val validacion = validationModel()
-    val usuario = usuarioModel()
-    val start = startApi()
-    val interes = interesModel()
-    lateinit var service: ApiService
+class registrointeres : AppCompatActivity(), View.OnClickListener {
+
+    private val validacion = validationModel()
+    private val usuario = usuarioModel()
+    private val start = startApi()
+    private val interes = interesModel()
+    private val actividades = activityModel(this)
+    private lateinit var service: ApiService
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrointeres)
+        service = start.initApi()
+        validacion.hideProgress(bar_registroInte)
         validacion.context = this
-        val SHAREPRE = "usuario"
-        val preferencias = getSharedPreferences(SHAREPRE, Context.MODE_PRIVATE)
-        val retrofit = start.initApi()
-        service = retrofit.create<ApiService>(ApiService::class.java)
+        validacion.preferencias_user = getSharedPreferences(validacion.PREF_USUARIO, Context.MODE_PRIVATE)
+
         getCategorias()
         var intent = getIntent().extras
         if (intent != null) {
@@ -55,20 +55,24 @@ class registrointeres : AppCompatActivity() {
         LocalBroadcastManager.getInstance(this)
             .registerReceiver(mensajeRecibido, IntentFilter("mensaje-id"))
 
-        btnFinalizarRegistro.setOnClickListener {
+        btnFinalizarRegistro.setOnClickListener(this)
+    }
+    override fun onClick(v: View?) {
+        if(btnFinalizarRegistro == v){
+            validacion.showProgress(bar_registroInte)
+            validacion.hideButton(btnFinalizarRegistro)
             if (usuario.idinteres != 0) {
-                AddUsuario(usuario, preferencias)
+                AddUsuario(usuario,validacion.preferencias_user!!)
             } else {
-                Toast.makeText(
-                    applicationContext,
-                    "Selececione algguna categoria de preferencia.",
-                    Toast.LENGTH_SHORT
-                ).show()
+                actividades.showMensajeToast("Selececione alguna categoria de preferencia.")
+                validacion.showButton(btnFinalizarRegistro)
+                validacion.hideProgress(bar_registroInte)
             }
         }
     }
 
-    fun AddUsuario(usuario: usuarioModel, prederencias: SharedPreferences) {
+
+    fun AddUsuario(usuario: usuarioModel, preferencias: SharedPreferences) {
         service.AddUsuario(
             usuario.email,
             usuario.pass,
@@ -83,7 +87,7 @@ class registrointeres : AppCompatActivity() {
             "",
             "",
             usuario.idinteres
-        ).enqueue(object : retrofit2.Callback<String> {
+        ).enqueue(object : Callback<String> {
             @RequiresApi(Build.VERSION_CODES.KITKAT)
             override fun onFailure(call: Call<String>, t: Throwable) {
                 Toast.makeText(
@@ -96,8 +100,7 @@ class registrointeres : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<String>, response: Response<String>) {
-                val json = response?.body()
-                val share = prederencias.edit()
+                val share = preferencias.edit()
                 share.putString("id", response.body())
                 share.putInt("idperfil", 3)
                 share.putString("nombre", usuario.nombre)
@@ -108,13 +111,14 @@ class registrointeres : AppCompatActivity() {
                 share.putString("fechanacimiento", usuario.fechanacimiento)
                 share.putString("longi", usuario.longi)
                 share.putString("lat", usuario.lat)
-                share.putInt("idinteres", usuario.idinteres)
+                share.putString("idinteres", usuario.idinteres.toString())
                 share.putString("fotoperfil", usuario.fotoperfil)
                 share.putString("email", usuario.email)
                 share.putString("pass", usuario.pass)
                 share.commit()
-                val intento = Intent(applicationContext, MainActivity::class.java)
+                val intento = Intent(applicationContext, permisos::class.java)
                 startActivity(intento)
+                finish()
             }
         })
     }
@@ -137,15 +141,14 @@ class registrointeres : AppCompatActivity() {
                     val row = array.getJSONObject(i)
                     interes.id = row.getString("id").toString()
                     interes.nombre = row.getString("nombre").toString()
-                    lista.add(interesModel(interes.id, interes.nombre))
-                    rcv = rcvInteres
-                    adp = adpInteres(applicationContext, lista)
+                    interes.icono = row.getString("icono")
+                    lista.add(interesModel(interes.id, interes.nombre, interes.icono))
                 }
+                rcv = rcvInteres
+                adp = adpInteres(applicationContext, lista, 1)
                 rcv?.layoutManager = GridLayoutManager(applicationContext, 2)
                 rcv?.adapter = adp
-
             }
-
             override fun onFailure(call: Call<JsonArray>, t: Throwable) {
 
             }
